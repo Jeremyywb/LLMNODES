@@ -1,0 +1,22 @@
+# Summary
+
+* [简介](README.md)
+* [第一章 模型基础](chapter1/README.md)
+    * [Transformer 原理](chapter1/transformer.md)
+    * [自注意力机制](chapter1/self_attention.md)
+* [第二章 预训练与微调](chapter2/README.md)
+    * [预训练目标](chapter2/pretraining_objectives.md)
+    * [微调策略](chapter2/fine_tuning.md)
+* [第三章 推理与部署](chapter3/README.md)
+    * [推理优化](chapter3/inference_optimization.md)
+    * [量化与蒸馏](chapter3/quantization_distillation.md)
+    * [部署方案](chapter3/deployment.md)
+* [第四章 工具与框架](chapter4/README.md)
+    * [HuggingFace 使用](chapter4/huggingface.md)
+    * [DeepSpeed 和 vLLM](chapter4/deepspeed_vllm.md)
+* [第五章 应用实战](chapter5/README.md)
+    * [对话系统](chapter5/chatbot.md)
+    * [智能搜索与推荐](chapter5/retrieval_recommendation.md)
+    * [企业级落地案例](chapter5/enterprise.md)
+* [结束语](end/README.md)
+
