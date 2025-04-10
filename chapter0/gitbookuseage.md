@@ -19,8 +19,20 @@
 - **gitbook目录**：根目录内创建gitbook目录，用于gitbook网页创建生成
 - **markdown目录**：根目录内创建markdown目录，存放markdown格式文章
 - **book-end目录**：用于io.book网站内容更新
-  - 根目录执行：`git clone -b gh-pages git@github.com:USER_NAME/book.git book-end`
+  - 根目录执行：
+```bash
+   git clone -b gh-pages git@github.com:USER_NAME/book.git book-end
+```
+
   - 这一步克隆了gh-pages分支，并存放在book-end目录
+
+### git命令目录安全问题
+    配置book-end目录为安全目录：
+```bash
+   git config --global --add safe.directory "D:/COMPETITIONS/LLMNOTES/book-end"
+```
+
+    
 
 ### 额外插件配置
 1. 在gitbook目录中创建**book.json**文件，添加侧边栏可折叠插件：

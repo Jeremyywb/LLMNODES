@@ -295,12 +295,21 @@
 <li><strong>&#x6839;&#x76EE;&#x5F55;</strong>&#xFF1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6839;&#x76EE;&#x5F55;&#xFF0C;&#x7528;&#x4E8E;git&#x548C;gitbook&#x751F;&#x6210;&#x6587;&#x7AE0;</li>
 <li><strong>gitbook&#x76EE;&#x5F55;</strong>&#xFF1A;&#x6839;&#x76EE;&#x5F55;&#x5185;&#x521B;&#x5EFA;gitbook&#x76EE;&#x5F55;&#xFF0C;&#x7528;&#x4E8E;gitbook&#x7F51;&#x9875;&#x521B;&#x5EFA;&#x751F;&#x6210;</li>
 <li><strong>markdown&#x76EE;&#x5F55;</strong>&#xFF1A;&#x6839;&#x76EE;&#x5F55;&#x5185;&#x521B;&#x5EFA;markdown&#x76EE;&#x5F55;&#xFF0C;&#x5B58;&#x653E;markdown&#x683C;&#x5F0F;&#x6587;&#x7AE0;</li>
-<li><strong>book-end&#x76EE;&#x5F55;</strong>&#xFF1A;&#x7528;&#x4E8E;io.book&#x7F51;&#x7AD9;&#x5185;&#x5BB9;&#x66F4;&#x65B0;<ul>
-<li>&#x6839;&#x76EE;&#x5F55;&#x6267;&#x884C;&#xFF1A;<code>git clone -b gh-pages git@github.com:USER_NAME/book.git book-end</code></li>
-<li>&#x8FD9;&#x4E00;&#x6B65;&#x514B;&#x9686;&#x4E86;gh-pages&#x5206;&#x652F;&#xFF0C;&#x5E76;&#x5B58;&#x653E;&#x5728;book-end&#x76EE;&#x5F55;</li>
+<li><p><strong>book-end&#x76EE;&#x5F55;</strong>&#xFF1A;&#x7528;&#x4E8E;io.book&#x7F51;&#x7AD9;&#x5185;&#x5BB9;&#x66F4;&#x65B0;</p>
+<ul>
+<li><p>&#x6839;&#x76EE;&#x5F55;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code class="lang-bash">git <span class="hljs-built_in">clone</span> -b gh-pages git@github.com:USER_NAME/book.git book-end
+</code></pre>
+</li>
+<li><p>&#x8FD9;&#x4E00;&#x6B65;&#x514B;&#x9686;&#x4E86;gh-pages&#x5206;&#x652F;&#xFF0C;&#x5E76;&#x5B58;&#x653E;&#x5728;book-end&#x76EE;&#x5F55;</p>
+</li>
 </ul>
 </li>
 </ul>
+<h3 id="git&#x547D;&#x4EE4;&#x76EE;&#x5F55;&#x5B89;&#x5168;&#x95EE;&#x9898;">git&#x547D;&#x4EE4;&#x76EE;&#x5F55;&#x5B89;&#x5168;&#x95EE;&#x9898;</h3>
+<pre><code>&#x914D;&#x7F6E;book-end&#x76EE;&#x5F55;&#x4E3A;&#x5B89;&#x5168;&#x76EE;&#x5F55;&#xFF1A;
+</code></pre><pre><code class="lang-bash">   git config --global --add safe.directory <span class="hljs-string">&quot;D:/COMPETITIONS/LLMNOTES/book-end&quot;</span>
+</code></pre>
 <h3 id="&#x989D;&#x5916;&#x63D2;&#x4EF6;&#x914D;&#x7F6E;">&#x989D;&#x5916;&#x63D2;&#x4EF6;&#x914D;&#x7F6E;</h3>
 <ol>
 <li>&#x5728;gitbook&#x76EE;&#x5F55;&#x4E2D;&#x521B;&#x5EFA;<strong>book.json</strong>&#x6587;&#x4EF6;&#xFF0C;&#x6DFB;&#x52A0;&#x4FA7;&#x8FB9;&#x680F;&#x53EF;&#x6298;&#x53E0;&#x63D2;&#x4EF6;&#xFF1A;<pre><code class="lang-json">{
@@ -707,7 +716,7 @@ gitbook install
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GitBook自动更新指南","level":"1.2.2","depth":2,"next":{"title":"第1章 模型基础","level":"1.3","depth":1,"path":"chapter1/README.md","ref":"chapter1/README.md","articles":[]},"previous":{"title":"collectKnowledge_LLM有用资料整理收集","level":"1.2.1","depth":2,"path":"chapter0/collectKnowledge.md","ref":"chapter0/collectKnowledge.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters"],"pluginsConfig":{"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"chapter0/gitbookuseage.md","mtime":"2025-04-10T16:59:43.137Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-04-10T16:59:44.656Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GitBook自动更新指南","level":"1.2.2","depth":2,"next":{"title":"第1章 模型基础","level":"1.3","depth":1,"path":"chapter1/README.md","ref":"chapter1/README.md","articles":[]},"previous":{"title":"collectKnowledge_LLM有用资料整理收集","level":"1.2.1","depth":2,"path":"chapter0/collectKnowledge.md","ref":"chapter0/collectKnowledge.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters"],"pluginsConfig":{"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"chapter0/gitbookuseage.md","mtime":"2025-04-10T17:05:11.472Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-04-10T17:05:12.972Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
