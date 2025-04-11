@@ -37,9 +37,79 @@
 ### 额外插件配置
 1. 在gitbook目录中创建**book.json**文件，添加侧边栏可折叠插件：
    ```json
-   {
-     "plugins": ["expandable-chapters"]
-   }
+    {
+      "plugins": [
+        "expandable-chapters-small",    
+        "chapter-fold",
+        "sidebar-style",
+        "tbfed-pagefooter",
+        "hide-element",
+        "simple-page-toc",
+        "popup",
+        "page-treeview",
+        "github",
+        "code",
+        "copy-code-button"
+
+
+      ],
+
+      "links": {
+        "sidebar": {
+          "公众号": "https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzIwODc1MDg2NQ==&scene=1&album_id=3936221539196174339&count=3#wechat_redirect"
+        },
+        "sharing": {
+           "douban": false,
+           "facebook": false,
+           "google": true,
+           "hatenaBookmark": false,
+           "instapaper": false,
+           "line": true,
+           "linkedin": true,
+           "messenger": false,
+           "pocket": false,
+           "qq": false,
+           "qzone": true,
+           "stumbleupon": false,
+           "twitter": false,
+           "viber": false,
+           "vk": false,
+           "weibo": true,
+           "whatsapp": true,
+           "all": [
+               "facebook", "google", "twitter",
+               "weibo", "instapaper", "linkedin",
+               "pocket", "stumbleupon","whatsapp"
+           ]
+       }
+      },
+
+      "pluginsConfig": {
+        "page-treeview": {
+          "copyright": ""
+        },
+      
+        "sidebar-style": {
+                "title": "《大模型笔记》",
+                "author": "游文斌"
+            },
+        "hide-element": {
+            "elements": ["br",".gitbook-link"]      },
+        "tbfed-pagefooter": {
+                "copyright":"Copyright &copy 游文斌  大模型算法工程师，微信：WayneBinY",
+                "modify_label": "该文件修订时间：",
+                "modify_format": "YYYY-MM-DD HH:mm:ss",
+                "noPowered": true
+            },
+        "github": {
+          "url": "https://github.com/Jeremyywb"
+        },
+        "code": {
+          "copyButtons": false
+        }
+
+      }
+    }
    ```
 2. 安装插件：
    ```bash
@@ -71,6 +141,8 @@ import shutil
 import subprocess
 import datetime
 import re
+from git import Repo, GitCommandError
+
 
 class GitbookUpdater:
     def __init__(self, root_dir=None):
@@ -156,7 +228,7 @@ class GitbookUpdater:
                     chapter_mapping[item] = simplified_dir
                     
                     # 添加章节标题
-                    summary_content.append(f"\n## 第{chapter_num}章 {chapter_name}\n")
+                    # summary_content.append(f"\n## 第{chapter_num}章 {chapter_name}\n")
                     
                     # 添加章节README到SUMMARY
                     summary_content.append(f"* [第{chapter_num}章 {chapter_name}]({simplified_dir}/README.md)\n")
@@ -165,10 +237,12 @@ class GitbookUpdater:
                     for md_file in sorted(os.listdir(item_path)):
                         if md_file.endswith(".md") and md_file != "README.md":
                             # 提取文件标题
+                            if "_" not in md_file:
+                                raise ValueError(f"文件{md_file}需要有下划线用于提取标题")
+                            title = md_file.split("_")[1]
+                            title = title.split(".")[0]
                             with open(os.path.join(item_path, md_file), 'r', encoding='utf-8') as f:
                                 content = f.read()
-                                title_match = re.search(r'^# (.+)$', content, re.MULTILINE)
-                                title = title_match.group(1) if title_match else md_file[:-3]
                             
                             # 转换文件名，去掉前缀并使用下划线连接
                             dest_filename = md_file
@@ -280,7 +354,8 @@ class GitbookUpdater:
                 shutil.copytree(source_item, target_item)
             else:
                 shutil.copy2(source_item, target_item)
-    
+
+
     def update_github_pages(self):
         """更新GitHub Pages"""
         print("正在更新GitHub Pages...")
@@ -297,6 +372,8 @@ class GitbookUpdater:
         
         # 提交更改
         try:
+            subprocess.run('git config user.email "jeremy_ywb@163.com"', shell=True)
+            subprocess.run('git config user.name "Auto Commit Bot"', shell=True)
             subprocess.run(f'git commit -m "{commit_message}"', shell=True, check=True)
             
             # 推送到远程仓库
