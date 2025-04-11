@@ -322,7 +322,15 @@ class GitbookUpdater:
                         os.path.join(orig_path, md_file),
                         os.path.join(dest_path, dest_filename)
                     )
-    
+            # 复制 images 子目录中的图片文件到 img 子目录
+            images_src_path = os.path.join(orig_path, "images")
+            if os.path.exists(images_src_path) and os.path.isdir(images_src_path):
+                img_dest_path = os.path.join(dest_path, "images")
+                os.makedirs(img_dest_path, exist_ok=True)  # 确保 img 目录存在
+                for img_file in os.listdir(images_src_path):
+                    img_file_path = os.path.join(images_src_path, img_file)
+                    if os.path.isfile(img_file_path):  # 确保是文件
+                        shutil.copy(img_file_path, os.path.join(img_dest_path, img_file))
     def generate_static_site(self):
         """生成GitBook静态网站"""
         print("正在生成静态网站...")
