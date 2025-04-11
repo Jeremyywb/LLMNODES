@@ -103,6 +103,7 @@ prompt_template = PromptTemplate(template=template, input_variables=["reason", "
 ```
 
 **5. Few-Shot Examples 的使用**
+
 Few-Shot Examples 是一组示例对话、问题与答案，用于帮助语言模型理解任务要求。通过提供少量示例，模型可以模仿示例中的回答风格，从而生成更为合理的输出。
 
 FewShotPromptTemplate 类结合了 PromptTemplate 与示例集合。其主要参数包括
@@ -224,17 +225,22 @@ Runnable 对象主要包含以下几个核心功能：
     - stream / astream
 用于流式处理数据，适合处理需要逐步输出或实时展示结果的场景。流式接口可以一次处理一个数据块，并立即返回结果，适合大数据集的增量生成或实时响应。
 -  **输入与输出 Schema**
+  
+
     每个 Runnable 对象都定义了：
     - 输入 schema：描述期望的输入数据格式和类型。
     - 输出 schema：说明生成的结果数据格式。
     - 配置 schema：有时还会有额外的配置信息，方便开发者在调用前进行检查和验证。
 
-    通过这些 schema 信息，开发者可以在组合链式流程时更容易进行调试和数据验证，确保每个组件之间的数据格式匹配。
+     通过这些 schema 信息，开发者可以在组合链式流程时更容易进行调试和数据验证，确保每个组件之间的数据格式匹配。 
+
 
 - **组合性**
-由于所有 Runnable 对象遵循相同的接口，开发者可以通过简单的管道符号（|）将不同的组件拼接起来，形成一个复杂的工作流程。这个组合过程类似于 Unix 系统中的管道命令，每个组件的输出直接作为下一个组件的输入。
+
+    由于所有 Runnable 对象遵循相同的接口，开发者可以通过简单的管道符号（|）将不同的组件拼接起来，形成一个复杂的工作流程。这个组合过程类似于 Unix 系统中的管道命令，每个组件的输出直接作为下一个组件的输入。
 - **并发支持**
-Runnable 对象支持异步执行（使用 asyncio 的 await 语法），使得可以同时运行多个任务。这对于调用外部 API、并发数据处理等场景非常关键，可以大幅度提升程序性能。
+
+    Runnable 对象支持异步执行（使用 asyncio 的 await 语法），使得可以同时运行多个任务。这对于调用外部 API、并发数据处理等场景非常关键，可以大幅度提升程序性能。
 
 ##### 2.1.3 在 LLM 应用中的作用
 在构建大型语言模型（LLM）应用时，通常需要处理以下几个环节：
@@ -302,6 +308,7 @@ LangChain 提供了多种内置的输出解析器，满足不同的解析需求
 - 作用：直接返回原始字符串，不做额外解析。
 - 适用场景：当你只需要获取 LLM 的文本输出，而无需进一步结构化时使用。
 - 示例：
+  
 ```python
 from langchain_core.output_parsers import StrOutputParser
 
@@ -314,6 +321,7 @@ print(output)  # 直接输出原文本
 - 作用：将 LLM 输出的 JSON 格式文本解析为 Python 的字典（dict）。
 - 适用场景：当 LLM 输出符合 JSON 标准格式时，使用该解析器可直接获取结构化数据。
 - 示例：
+
 ```python
 from langchain_core.output_parsers import JsonOutputParser
 
@@ -327,6 +335,7 @@ print(output)  # 输出: {'name': 'Alice', 'age': 25}
 - 作用：将 LLM 输出的 JSON 数据解析并转换为预先定义的 Pydantic 模型对象，同时进行数据校验。
 - 适用场景：当你希望严格控制输出格式，并利用 Pydantic 提供的数据校验和默认值功能时使用。
 - 示例：
+
 ```python
 from langchain_core.output_parsers import PydanticOutputParser
 from pydantic import BaseModel
@@ -360,6 +369,7 @@ print(output)  # 输出: ['apple', 'banana', 'orange']
 - 作用：利用正则表达式从 LLM 输出中提取出特定格式的数据。
 - 适用场景：当输出格式比较复杂或不规则，但包含可以通过正则匹配的关键信息时使用。
 - 示例：
+
 ```python
 from langchain_core.output_parsers import RegexParser
 
@@ -375,6 +385,8 @@ print(output)
 ##### 3.2.6. 自定义 Output Parser
 如果内置的解析器无法满足你的特定需求，你可以自定义解析器。通常的方法是继承 BaseOutputParser 并实现 parse 方法。
 示例
+
+
 ```python
 from langchain_core.output_parsers import BaseOutputParser
 
@@ -392,6 +404,8 @@ print(output)
 
 
 在构建 LangChain 的完整流程时，Output Parser 常与 Prompt、LLM 调用等组件结合，形成一个完整的数据流。例如，构建一个提取信息的链式流程时，你可能会这样组合：
+
+
 ```python
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
