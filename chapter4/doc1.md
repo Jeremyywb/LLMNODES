@@ -469,6 +469,7 @@ BaseMessage，用于表示来自人类的消息。这类消息通常作为输入
 用于封装人类发送给模型的文本消息，通常用于对话场景中与模型交互。比如在对话系统中，HumanMessage 会包含用户的提问或指令内容。
 
 - **示例**：
+
 ```python
 from langchain_core.messages import HumanMessage, SystemMessage
 
