@@ -36,82 +36,298 @@
 
 ### 额外插件配置
 1. 在gitbook目录中创建**book.json**文件，添加侧边栏可折叠插件：
-   ```json
-    {
-      "plugins": [
-        "expandable-chapters-small",    
-        "chapter-fold",
-        "sidebar-style",
-        "tbfed-pagefooter",
-        "hide-element",
-        "simple-page-toc",
-        "popup",
-        "page-treeview",
-        "github",
-        "code",
-        "copy-code-button"
+```json
+{
+  "plugins": [
+    "expandable-chapters-small",    
+    "chapter-fold",
+    "sidebar-style",
+    "tbfed-pagefooter",
+    "hide-element",
+    "simple-page-toc",
+    "popup",
+    "page-treeview",
+    "github",
+    "code",
+    "copy-code-button",
+    "alerts",
+    "page-toc-button",
+    "rss"
 
+  ],
+  "styles": {
+    "website": "styles/website.css"
+  },
 
-      ],
+  "links": {
+    "sidebar": {
+      "公众号": "https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzIwODc1MDg2NQ==&scene=1&album_id=3936221539196174339&count=3#wechat_redirect"
+    },
+    "sharing": {
+       "douban": false,
+       "facebook": false,
+       "google": true,
+       "hatenaBookmark": false,
+       "instapaper": false,
+       "line": true,
+       "linkedin": true,
+       "messenger": false,
+       "pocket": false,
+       "qq": false,
+       "qzone": true,
+       "stumbleupon": false,
+       "twitter": false,
+       "viber": false,
+       "vk": false,
+       "weibo": true,
+       "whatsapp": true,
+       "all": [
+           "facebook", "google", "twitter",
+           "weibo", "instapaper", "linkedin",
+           "pocket", "stumbleupon","whatsapp"
+       ]
+   }
+  },
 
-      "links": {
-        "sidebar": {
-          "公众号": "https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzIwODc1MDg2NQ==&scene=1&album_id=3936221539196174339&count=3#wechat_redirect"
+  "pluginsConfig": {
+    "page-treeview": {
+      "copyright": ""
+    },
+  
+    "sidebar-style": {
+            "title": "《大模型笔记》",
+            "author": "游文斌"
         },
-        "sharing": {
-           "douban": false,
-           "facebook": false,
-           "google": true,
-           "hatenaBookmark": false,
-           "instapaper": false,
-           "line": true,
-           "linkedin": true,
-           "messenger": false,
-           "pocket": false,
-           "qq": false,
-           "qzone": true,
-           "stumbleupon": false,
-           "twitter": false,
-           "viber": false,
-           "vk": false,
-           "weibo": true,
-           "whatsapp": true,
-           "all": [
-               "facebook", "google", "twitter",
-               "weibo", "instapaper", "linkedin",
-               "pocket", "stumbleupon","whatsapp"
-           ]
+    "hide-element": {
+        "elements": ["br",".gitbook-link"]      },
+    "tbfed-pagefooter": {
+            "copyright":"Copyright &copy 游文斌  大模型算法工程师，微信：WayneBinY",
+            "modify_label": "该文件修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss",
+            "noPowered": true
+        },
+    "github": {
+      "url": "https://github.com/Jeremyywb"
+    },
+    "code": {
+      "copyButtons": false
+    },
+    "page-toc-button": {
+            "maxTocDepth": 2,
+            "minTocSize": 2
        }
-      },
 
-      "pluginsConfig": {
-        "page-treeview": {
-          "copyright": ""
-        },
-      
-        "sidebar-style": {
-                "title": "《大模型笔记》",
-                "author": "游文斌"
-            },
-        "hide-element": {
-            "elements": ["br",".gitbook-link"]      },
-        "tbfed-pagefooter": {
-                "copyright":"Copyright &copy 游文斌  大模型算法工程师，微信：WayneBinY",
-                "modify_label": "该文件修订时间：",
-                "modify_format": "YYYY-MM-DD HH:mm:ss",
-                "noPowered": true
-            },
-        "github": {
-          "url": "https://github.com/Jeremyywb"
-        },
-        "code": {
-          "copyButtons": false
-        }
+  }
+}
 
-      }
+```
+2. 在gitbook目录中创建styles文件夹，并创建website.css，填入以下内容
+```css
+/* 全局设置 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* 整体容器 */
+  .book {
+    background-color: #fff;
+  }
+  
+  /* 侧边栏 */
+  .book .book-summary {
+    background-color: #f7f7f7;
+    border-right: 1px solid #e9e9e9;
+    font-size: 0.9em;
+  }
+  
+  /* 侧边栏链接 */
+  .book .book-summary ul.summary li a {
+    padding: 10px 16px;
+    color: #444;
+    transition: all 0.2s ease;
+  }
+  
+  .book .book-summary ul.summary li a:hover {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    text-decoration: none;
+  }
+  
+  /* 侧边栏活动链接 */
+  .book .book-summary ul.summary li.active > a {
+    color: #1565c0;
+    border-left: 4px solid #1565c0;
+    background-color: #e3f2fd;
+    font-weight: 600;
+  }
+  
+  /* 页面内容 */
+  .book .book-body {
+    color: #333;
+  }
+  
+  .book .book-body .page-wrapper .page-inner {
+    max-width: 900px;
+    padding: 20px 30px;
+  }
+  
+  /* 标题 */
+  .markdown-section h1 {
+    font-size: 2.2em;
+    color: #1565c0;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
+  }
+  
+  .markdown-section h2 {
+    font-size: 1.8em;
+    color: #1565c0;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.8em;
+  }
+  
+  .markdown-section h3 {
+    font-size: 1.5em;
+    color: #1976d2;
+    margin-top: 1.5em;
+  }
+  
+  .markdown-section h4 {
+    font-size: 1.25em;
+    color: #1976d2;
+  }
+  
+  /* 文本和段落 */
+  .markdown-section p {
+    margin: 1em 0;
+    line-height: 1.7;
+    font-size: 1em;
+  }
+  
+  /* 链接 */
+  .markdown-section a {
+    color: #1976d2;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .markdown-section a:hover {
+    color: #1565c0;
+    text-decoration: underline;
+  }
+  
+  /* 代码块 */
+  .markdown-section pre {
+    background-color: #f6f8fa;
+    border-radius: 4px;
+    padding: 1em;
+    margin: 1em 0;
+    overflow: auto;
+    line-height: 1.45;
+  }
+  
+  .markdown-section pre > code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.9em;
+    color: #24292e;
+    background-color: transparent;
+    padding: 0;
+  }
+  
+  /* 行内代码 */
+  .markdown-section code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    padding: 0.2em 0.4em;
+    font-size: 0.9em;
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    color: #24292e;
+  }
+  
+  /* 引用块 */
+  .markdown-section blockquote {
+    margin: 1em 0;
+    border-left: 4px solid #1976d2;
+    padding: 0 1em;
+    color: #6a737d;
+  }
+  
+  /* 表格 */
+  .markdown-section table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    overflow: auto;
+  }
+  
+  .markdown-section table tr {
+    border-top: 1px solid #dfe2e5;
+  }
+  
+  .markdown-section table th,
+  .markdown-section table td {
+    padding: 0.6em 1em;
+    border: 1px solid #dfe2e5;
+  }
+  
+  .markdown-section table th {
+    font-weight: 600;
+    background-color: #f6f8fa;
+  }
+  
+  .markdown-section table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+  }
+  
+  /* 图片 */
+  .markdown-section img {
+    max-width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 页面导航 */
+  .navigation {
+    font-size: 0.9em;
+  }
+  
+  /* 插件：可展开章节 */
+  .book .book-summary .chapter > .articles {
+    transition: max-height 0.3s ease;
+  }
+  
+  /* Treeview 修复 */
+  .treeview__container {
+    margin-bottom: 20px;
+    border: 1px solid #e9e9e9;
+    border-radius: 4px;
+    padding: 15px;
+    background-color: #f7f7f7;
+  }
+  
+  /* 移动设备优化 */
+  @media (max-width: 768px) {
+    .book .book-body .page-wrapper .page-inner {
+      padding: 15px;
     }
-   ```
-2. 安装插件：
+    
+    .markdown-section h1 {
+      font-size: 1.8em;
+    }
+    
+    .markdown-section h2 {
+      font-size: 1.5em;
+    }
+  }
+
+```
+ 
+3. 安装插件：
    ```bash
    cd gitbook
    gitbook install
