@@ -4,7 +4,7 @@
 
 ## 向量检索技术：Faiss
 
-### [Faiss入门及应用经验记录](https://zhuanlan.zhihu.com/p/133210698)
+### Faiss入门及应用经验记录 [ 链 接 ](https://zhuanlan.zhihu.com/p/133210698)
 
 深入剖析 Faiss 中的核心算法：
 - 向量相似度计算原理
@@ -14,7 +14,7 @@
 
 对想要理解 Faiss 底层原理或优化检索性能的开发者特别有帮助。
 
-### [一文搞懂faiss计算](https://zhuanlan.zhihu.com/p/133210698)
+### 一文搞懂faiss计算 [ 链 接 ](https://zhuanlan.zhihu.com/p/133210698)
 
 简明介绍了Faiss在大规模向量检索中的基本流程与加速策略：
 - 检索流程分为训练、构建数据库、查询三步
@@ -27,7 +27,7 @@
 
 ## 高效推理：vLLM
 
-### [一部署vLLM:分步指南](https://zhuanlan.zhihu.com/p/691824083)
+### 一部署vLLM:分步指南 [ 链 接 ](https://zhuanlan.zhihu.com/p/691824083)
 
 简明介绍了 vLLM 在本地部署开源大语言模型的流程及关键特性：
 
@@ -40,7 +40,7 @@
 适合希望快速落地本地 LLM 服务、并进行高效推理部署的算法工程师与大模型应用开发者。
 
 
-### [VLLM分布式推理进阶1：数据并行 vs 张量并行](https://zhuanlan.zhihu.com/p/700757758)
+### VLLM分布式推理进阶1：数据并行 vs 张量并行 [ 链 接 ](https://zhuanlan.zhihu.com/p/700757758)
 
 深入探讨了 vLLM 在多卡分布式推理场景下的两种并行策略及其性能表现：
 
@@ -54,7 +54,7 @@
 
 ## 文本分块策略
 
-### [语义切块思路](https://github.com/gomate-community/TrustRAG/blob/6aaf56e9bbd77518e41a0690620e10f02c115309/docs/semantic_chunk.md)
+### 语义切块思路 [ 链 接 ](https://github.com/gomate-community/TrustRAG/blob/6aaf56e9bbd77518e41a0690620e10f02c115309/docs/semantic_chunk.md)
 
 探讨基于语义的文本分块方法：
 - 语义切块的核心思想
@@ -66,7 +66,7 @@
 
 ---
 
-### [在 LangChain 尝试了 N 种可能后，我发现了分块的奥义！](https://zilliz.com.cn/learn/langchain-chunking-milvus)
+### 在 LangChain 尝试了 N 种可能后，我发现了分块的奥义！ [ 链 接 ](https://zilliz.com.cn/learn/langchain-chunking-milvus)
 
 深入剖析 LangChain 中的文本分块实践方法：
 - 不同分块策略（MarkdownHeader + RecursiveCharacter）的组合测试效果
@@ -81,7 +81,7 @@
 适合希望深入理解 RAG 系统中“分块”环节在不同场景中表现差异的工程师与研发团队。
 
 
-### [RAG分块策略：主流方法（递归、jina-seg）+前沿推荐（Meta-chunking、Late chunking、SLM-SFT）](https://zhuanlan.zhihu.com/p/11903296230)
+### RAG分块策略：主流方法（递归、jina-seg）+前沿推荐（Meta-chunking、Late chunking、SLM-SFT） [ 链 接 ](https://zhuanlan.zhihu.com/p/11903296230)
 
 深入探讨了文本分块在构建 RAG 应用中的策略和优化方法：
 - 分析文本分块对大模型输出效果的影响（过长与过短的利弊）
@@ -94,7 +94,7 @@
 
 
 
-### [最详细的文本分块(Chunking)方法，直接影响LLM应用效果](https://zhuanlan.zhihu.com/p/133210698)
+### 最详细的文本分块(Chunking)方法，直接影响LLM应用效果 [ 链 接 ](https://zhuanlan.zhihu.com/p/133210698)
 
 深入剖析文本分块方法的核心原理：
 - 文本分块的定义与应用场景
@@ -103,7 +103,7 @@
 - 分块与模型性能、响应速度之间的权衡策略
 适合关注 RAG 系统、文本预处理与大模型输入优化的工程师和研究人员。
 
-### [RAG 分块Chunk技术优劣、技巧、方法汇总（五）](https://zhuanlan.zhihu.com/p/673906072)  
+### RAG 分块Chunk技术优劣、技巧、方法汇总（五） [ 链 接 ](https://zhuanlan.zhihu.com/p/673906072)  
 深入剖析 RAG 中的分块技术核心要点：  
 - **分块方法论**：基于标题增强、动态标点规则与语义连贯性策略的多粒度文本分割技术。  
 - **参数调优**：块大小（如512 tokens）与重叠比例（如25%）的平衡优化策略。  
@@ -117,7 +117,7 @@
 
 ## RAG 系统优化
 
-### [RAG行业交流中发现的一些问题和改进方法](https://luxiangdong.com/2023/10/27/rag10/#/%E7%9C%8B%E7%9C%8B%E4%B8%BB%E8%A6%81%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88)
+### RAG行业交流中发现的一些问题和改进方法 [ 链 接 ](https://luxiangdong.com/2023/10/27/rag10/#/%E7%9C%8B%E7%9C%8B%E4%B8%BB%E8%A6%81%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88)
 
 深入剖析 RAG 架构在行业应用中的关键问题与改进策略：
 - 行业交流中对RAG需求与应用场景的探索
@@ -128,7 +128,7 @@
 适合希望深度理解RAG架构并优化企业级知识对话系统性能的算法工程师与大模型应用开发者。
 
 
-### [RAG 高效应用指南 05：再谈文档智能解析](https://mp.weixin.qq.com/s?__biz=Mzk0NDY0NzIyMA==&mid=2247484627&idx=1&sn=ebcd411566b819cf8558597a37429c7f&chksm=c3203988f457b09e6f891f65977ac052a777ae0f3d9586b11ed89be2e81951c63265bf0d2fca&cur_album_id=3416754933553168393&scene=190#rd)
+### RAG 高效应用指南 05：再谈文档智能解析 [ 链 接 ](https://mp.weixin.qq.com/s?__biz=Mzk0NDY0NzIyMA==&mid=2247484627&idx=1&sn=ebcd411566b819cf8558597a37429c7f&chksm=c3203988f457b09e6f891f65977ac052a777ae0f3d9586b11ed89be2e81951c63265bf0d2fca&cur_album_id=3416754933553168393&scene=190#rd)
 
 文档智能解析的概念、方法以及开源实现：
 - 什么是文档智能解析
@@ -137,7 +137,7 @@
 
 适合关注 RAG 系统、文本预处理与大模型输入优化的工程师和研究人员。
 
-### [大模型+知识库/数据库问答实践过程的经验汇总（三）](https://zhuanlan.zhihu.com/p/642125832)  
+### 大模型+知识库/数据库问答实践过程的经验汇总（三） [ 链 接 ](https://zhuanlan.zhihu.com/p/642125832)  
 深入探讨大模型在知识库与数据库问答系统中的全流程实践：  
 - **意图识别与修复**：通过关键词提取、语义槽填充、多轮对话继承等多模态方法增强用户query解析精度  
 - **Text-to-SQL优化策略**：采用任务拆解（Schema Link/分类/SQL生成）、大模型协作（GPT-4辅助本地模型）提升复杂语句生成准确度  
@@ -147,7 +147,7 @@
 
 适合需要构建企业级智能问答系统、优化大模型与数据库协同能力的AI工程师与全栈开发者。
 
-### [RAG的2024—随需而变，从狂热到理性](https://luxiangdong.com/2024/11/14/rag2024/)  
+### RAG的2024—随需而变，从狂热到理性 [ 链 接 ](https://luxiangdong.com/2024/11/14/rag2024/)  
 总结2024年RAG技术演进与市场变化，分析企业应用趋势及从业者生态：  
 - **技术架构优化**：Advanced RAG成为主流，索引组织（如元数据增强、指代消解）和混合检索（Hybrid+RRF+ReRank）显著提升准确率，知识提取工具应对多样化文件需求。  
 - **市场需求转变**：上半年追求“大而全”的AI解决方案遇冷，下半年转向“小而难”的垂直场景（如高精度问答），RAG因知识管理灵活、幻觉控制优势超越微调。  
@@ -159,7 +159,7 @@
 ## llamaIndex 相关
 
 
-### [llamaIndex读书笔记系列](https://aitutor.liduos.com/03-llamaIndex/03-1.html)  
+### llamaIndex读书笔记系列 [ 链 接 ](https://aitutor.liduos.com/03-llamaIndex/03-1.html)  
 
 这是莫尔索的llamaIndex入门笔记：
 - LlamaIndex介绍
@@ -170,7 +170,7 @@
 
 ## langchain 相关
 
-### [LangChain读书笔记系列](https://aitutor.liduos.com/02-langchain/02-1.html)  
+### LangChain读书笔记系列 [ 链 接 ](https://aitutor.liduos.com/02-langchain/02-1.html)  
 
 这是莫尔索的langchain入门笔记：
 - LangChain模块学习
