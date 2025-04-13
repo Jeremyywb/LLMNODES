@@ -775,11 +775,14 @@ MinerU开源地址:
 <https://github.com/opendatalab/MinerU/blob/master/README_zh-CN.md>
 
 ---
+
 需要添加内容，关于MinerU/Marker文档解析使用方法研究
-• 先列简单的方式，需要包含整个流程
-• minerU的使用：https://mineru.readthedocs.io/en/latest/user_guide/usage/command_line.html
+- 先列简单的方式，需要包含整个流程
+- minerU的使用：https://mineru.readthedocs.io/en/latest/user_guide/usage/command_line.html
 https://github.com/opendatalab/MinerU/blob/master/README_zh-CN.md
-• marker的使用：https://github.com/VikParuchuri/marker
+- marker的使用：https://github.com/VikParuchuri/marker
+
+
 ---
 
 
@@ -902,6 +905,7 @@ print(results[0].page_content)
   - 内存优先，易于集成在本地或小型服务器中。
 
 - **使用示例**：
+
 ```python
 from langchain.vectorstores import Chroma
 from langchain.embeddings.openai import OpenAIEmbeddings
@@ -927,6 +931,7 @@ print(results[0].page_content)
   - 丰富的查询接口和数据管理能力，适合大规模应用场景。
 
 - **使用示例**（假设已安装并启动 Milvus 服务）：
+
 ```python
 from langchain.vectorstores import Milvus
 from langchain.embeddings.openai import OpenAIEmbeddings
