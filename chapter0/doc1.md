@@ -36,6 +36,7 @@
 
 ### 额外插件配置
 1. 在gitbook目录中创建**book.json**文件，添加侧边栏可折叠插件：
+
 ```json
 {
   "plugins": [
@@ -121,7 +122,9 @@
 }
 
 ```
+
 2. 在gitbook目录中创建styles文件夹，并创建website.css，填入以下内容
+
 ```css
 /* 全局设置 */
 body {
@@ -328,10 +331,11 @@ body {
 ```
  
 3. 安装插件：
-   ```bash
+
+```bash
    cd gitbook
    gitbook install
-   ```
+```
 
 ### GitHub仓库配置
 1. 登录GitHub，创建一个新仓库（例如LLMNOTES）
@@ -339,6 +343,7 @@ body {
 3. 创建gh-pages分支：`git checkout -b gh-pages`
 4. 推送分支到仓库：`git push -u origin gh-pages`
 5. 切换回主分支：`git checkout master`
+
 
 完成这些步骤后，GitHub会自动为你分配一个网址：`https://USERNAME.github.io/LLMNOTES`
 
