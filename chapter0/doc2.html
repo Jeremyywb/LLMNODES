@@ -1,0 +1,985 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>RLHF训练代码PPO · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sidebar-style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-auto-scroll-table/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter1/" />
+    
+    
+    <link rel="prev" href="doc1.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzIwODc1MDg2NQ==&scene=1&album_id=3936221539196174339&count=3#wechat_redirect" target="_blank" class="custom-link">公众号</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第0章 资料收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="doc0.html">
+            
+                <a href="doc0.html">
+            
+                    
+                    LLM有用资料整理收集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="doc1.html">
+            
+                <a href="doc1.html">
+            
+                    
+                    GitBook自动更新指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="doc2.html">
+            
+                <a href="doc2.html">
+            
+                    
+                    RLHF训练代码PPO
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../chapter1/">
+            
+                <a href="../chapter1/">
+            
+                    
+                    第1章 模型基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../chapter2/">
+            
+                <a href="../chapter2/">
+            
+                    
+                    第2章 预训练与微调
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../chapter3/">
+            
+                <a href="../chapter3/">
+            
+                    
+                    第3章 推理与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../chapter4/">
+            
+                <a href="../chapter4/">
+            
+                    
+                    第4章 工具与框架
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../chapter4/doc0.html">
+            
+                <a href="../chapter4/doc0.html">
+            
+                    
+                    langchain笔记Day1 总体架构与核心模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../chapter4/doc1.html">
+            
+                <a href="../chapter4/doc1.html">
+            
+                    
+                    langchain笔记Day2 模型IO与数据连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../chapter5/">
+            
+                <a href="../chapter5/">
+            
+                    
+                    第5章 应用实战
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../chapter5/doc0.html">
+            
+                <a href="../chapter5/doc0.html">
+            
+                    
+                    一套可演进的RAG项目方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../chapter5/doc1.html">
+            
+                <a href="../chapter5/doc1.html">
+            
+                    
+                    千问系列72B模型微调与双T4部署解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../end/">
+            
+                <a href="../end/">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >RLHF训练代码PPO</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <pre><code class="lang-python">
+<span class="hljs-keyword">import</span> torch
+<span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn
+<span class="hljs-keyword">import</span> torch.nn.functional <span class="hljs-keyword">as</span> F
+<span class="hljs-keyword">import</span> torch.optim <span class="hljs-keyword">as</span> optim
+<span class="hljs-keyword">from</span> torch.distributions <span class="hljs-keyword">import</span> Categorical
+<span class="hljs-keyword">from</span> transformers <span class="hljs-keyword">import</span> AutoModelForCausalLM, AutoTokenizer
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm
+<span class="hljs-keyword">from</span> dataclasses <span class="hljs-keyword">import</span> dataclass
+<span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> List, Tuple, Dict, Optional
+<span class="hljs-keyword">import</span> wandb
+
+<span class="hljs-comment"># &#x914D;&#x7F6E;&#x53C2;&#x6570;</span>
+<span class="hljs-meta">@dataclass</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RLHFConfig</span>:</span>
+    pretrained_model: str = <span class="hljs-string">&quot;gpt2&quot;</span>  <span class="hljs-comment"># &#x9884;&#x8BAD;&#x7EC3;&#x6A21;&#x578B;</span>
+    lr: float = <span class="hljs-number">1e-5</span>  <span class="hljs-comment"># &#x5B66;&#x4E60;&#x7387;</span>
+    batch_size: int = <span class="hljs-number">8</span>  <span class="hljs-comment"># &#x6279;&#x6B21;&#x5927;&#x5C0F;</span>
+    epochs: int = <span class="hljs-number">3</span>  <span class="hljs-comment"># &#x8BAD;&#x7EC3;&#x8F6E;&#x6570;</span>
+    max_seq_len: int = <span class="hljs-number">512</span>  <span class="hljs-comment"># &#x6700;&#x5927;&#x5E8F;&#x5217;&#x957F;&#x5EA6;</span>
+    kl_coef: float = <span class="hljs-number">0.1</span>  <span class="hljs-comment"># KL&#x6563;&#x5EA6;&#x7CFB;&#x6570;</span>
+    discount_factor: float = <span class="hljs-number">0.99</span>  <span class="hljs-comment"># &#x6298;&#x6263;&#x56E0;&#x5B50;</span>
+    gae_lambda: float = <span class="hljs-number">0.95</span>  <span class="hljs-comment"># GAE lambda&#x7CFB;&#x6570;</span>
+    ppo_epochs: int = <span class="hljs-number">4</span>  <span class="hljs-comment"># PPO&#x66F4;&#x65B0;&#x8F6E;&#x6570;</span>
+    ppo_clip: float = <span class="hljs-number">0.2</span>  <span class="hljs-comment"># PPO&#x88C1;&#x526A;&#x7CFB;&#x6570;</span>
+    value_clip: float = <span class="hljs-number">0.2</span>  <span class="hljs-comment"># &#x4EF7;&#x503C;&#x88C1;&#x526A;&#x7CFB;&#x6570;</span>
+    entropy_coef: float = <span class="hljs-number">0.01</span>  <span class="hljs-comment"># &#x71B5;&#x7CFB;&#x6570;</span>
+    device: str = <span class="hljs-string">&quot;cuda&quot;</span> <span class="hljs-keyword">if</span> torch.cuda.is_available() <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;cpu&quot;</span>
+
+<span class="hljs-comment"># &#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#xFF1A;&#x76D1;&#x7763;&#x5FAE;&#x8C03;</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">supervised_fine_tuning</span><span class="hljs-params">(model, tokenizer, train_dataset, config)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x4F7F;&#x7528;&#x4EBA;&#x7C7B;&#x7F16;&#x5199;&#x7684;&#x9AD8;&#x8D28;&#x91CF;&#x56DE;&#x7B54;&#x8FDB;&#x884C;&#x76D1;&#x7763;&#x5FAE;&#x8C03;
+    &quot;&quot;&quot;</span>
+    optimizer = optim.AdamW(model.parameters(), lr=config.lr)
+    model.train()
+
+    <span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> range(config.epochs):
+        total_loss = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> batch <span class="hljs-keyword">in</span> tqdm(train_dataset.batch(config.batch_size), desc=f<span class="hljs-string">&quot;SFT Epoch {epoch}&quot;</span>):
+            <span class="hljs-comment"># &#x51C6;&#x5907;&#x8F93;&#x5165;&#x6570;&#x636E;</span>
+            inputs = tokenizer(batch[<span class="hljs-string">&quot;prompt&quot;</span>], return_tensors=<span class="hljs-string">&quot;pt&quot;</span>, padding=<span class="hljs-keyword">True</span>, truncation=<span class="hljs-keyword">True</span>, 
+                              max_length=config.max_seq_len).to(config.device)
+            labels = tokenizer(batch[<span class="hljs-string">&quot;response&quot;</span>], return_tensors=<span class="hljs-string">&quot;pt&quot;</span>, padding=<span class="hljs-keyword">True</span>, truncation=<span class="hljs-keyword">True</span>,
+                              max_length=config.max_seq_len).to(config.device)
+
+            <span class="hljs-comment"># &#x524D;&#x5411;&#x4F20;&#x64AD;&#x548C;&#x635F;&#x5931;&#x8BA1;&#x7B97;</span>
+            outputs = model(input_ids=inputs.input_ids, 
+                           attention_mask=inputs.attention_mask,
+                           labels=labels.input_ids)
+            loss = outputs.loss
+
+            <span class="hljs-comment"># &#x53CD;&#x5411;&#x4F20;&#x64AD;&#x548C;&#x4F18;&#x5316;</span>
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+            total_loss += loss.item()
+
+        print(f<span class="hljs-string">&quot;Epoch {epoch}, Average Loss: {total_loss / len(train_dataset)}&quot;</span>)
+
+    <span class="hljs-keyword">return</span> model
+
+<span class="hljs-comment"># &#x7B2C;&#x4E8C;&#x9636;&#x6BB5;&#xFF1A;&#x5956;&#x52B1;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RewardModel</span><span class="hljs-params">(nn.Module)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pretrained_model)</span>:</span>
+        super().__init__()
+        self.model = AutoModelForCausalLM.from_pretrained(pretrained_model)
+        <span class="hljs-comment"># &#x6DFB;&#x52A0;reward head&#xFF08;&#x4E00;&#x4E2A;&#x7EBF;&#x6027;&#x5C42;&#xFF09;</span>
+        self.reward_head = nn.Linear(self.model.config.hidden_size, <span class="hljs-number">1</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, input_ids, attention_mask)</span>:</span>
+        outputs = self.model(input_ids=input_ids, attention_mask=attention_mask, output_hidden_states=<span class="hljs-keyword">True</span>)
+        <span class="hljs-comment"># &#x4F7F;&#x7528;&#x6700;&#x540E;&#x4E00;&#x5C42;&#x9690;&#x85CF;&#x72B6;&#x6001;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;token</span>
+        last_hidden_state = outputs.hidden_states[<span class="hljs-number">-1</span>]
+        last_token_hidden = last_hidden_state[:, <span class="hljs-number">-1</span>, :]
+        reward = self.reward_head(last_token_hidden)
+        <span class="hljs-keyword">return</span> reward.squeeze(<span class="hljs-number">-1</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train_reward_model</span><span class="hljs-params">(model, tokenizer, preference_dataset, config)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    &#x4F7F;&#x7528;&#x4EBA;&#x7C7B;&#x504F;&#x597D;&#x6570;&#x636E;&#x8BAD;&#x7EC3;&#x5956;&#x52B1;&#x6A21;&#x578B;
+    &quot;&quot;&quot;</span>
+    reward_model = RewardModel(config.pretrained_model).to(config.device)
+    optimizer = optim.AdamW(reward_model.parameters(), lr=config.lr)
+
+    reward_model.train()
+    <span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> range(config.epochs):
+        total_loss = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> batch <span class="hljs-keyword">in</span> tqdm(preference_dataset.batch(config.batch_size), desc=f<span class="hljs-string">&quot;RM Epoch {epoch}&quot;</span>):
+            <span class="hljs-comment"># &#x5904;&#x7406;&#x504F;&#x597D;&#x6570;&#x636E;&#xFF08;&#x6BCF;&#x4E2A;&#x6837;&#x672C;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x63D0;&#x793A;&#x548C;&#x4E24;&#x4E2A;&#x56DE;&#x7B54;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x66F4;&#x53D7;&#x504F;&#x597D;&#xFF09;</span>
+            prompts = batch[<span class="hljs-string">&quot;prompt&quot;</span>]
+            chosen_responses = batch[<span class="hljs-string">&quot;chosen&quot;</span>]
+            rejected_responses = batch[<span class="hljs-string">&quot;rejected&quot;</span>]
+
+            <span class="hljs-comment"># &#x7F16;&#x7801;&#x9996;&#x9009;&#x56DE;&#x7B54;</span>
+            chosen_inputs = tokenizer(prompts, chosen_responses, return_tensors=<span class="hljs-string">&quot;pt&quot;</span>, padding=<span class="hljs-keyword">True</span>, 
+                                     truncation=<span class="hljs-keyword">True</span>, max_length=config.max_seq_len).to(config.device)
+
+            <span class="hljs-comment"># &#x7F16;&#x7801;&#x975E;&#x9996;&#x9009;&#x56DE;&#x7B54;</span>
+            rejected_inputs = tokenizer(prompts, rejected_responses, return_tensors=<span class="hljs-string">&quot;pt&quot;</span>, padding=<span class="hljs-keyword">True</span>,
+                                       truncation=<span class="hljs-keyword">True</span>, max_length=config.max_seq_len).to(config.device)
+
+            <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x5956;&#x52B1;&#x503C;</span>
+            chosen_rewards = reward_model(chosen_inputs.input_ids, chosen_inputs.attention_mask)
+            rejected_rewards = reward_model(rejected_inputs.input_ids, rejected_inputs.attention_mask)
+
+            <span class="hljs-comment"># &#x4F7F;&#x7528;Bradley-Terry&#x6A21;&#x578B;&#x6216;&#x4EA4;&#x53C9;&#x71B5;&#x8BA1;&#x7B97;&#x635F;&#x5931;</span>
+            loss = -torch.log(torch.sigmoid(chosen_rewards - rejected_rewards)).mean()
+
+            <span class="hljs-comment"># &#x53CD;&#x5411;&#x4F20;&#x64AD;&#x548C;&#x4F18;&#x5316;</span>
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+            total_loss += loss.item()
+
+        print(f<span class="hljs-string">&quot;Epoch {epoch}, Average Loss: {total_loss / len(preference_dataset)}&quot;</span>)
+
+    <span class="hljs-keyword">return</span> reward_model
+
+<span class="hljs-comment"># &#x7B2C;&#x4E09;&#x9636;&#x6BB5;&#xFF1A;&#x57FA;&#x4E8E;PPO&#x7684;RL&#x4F18;&#x5316;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ValueHead</span><span class="hljs-params">(nn.Module)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;&#x4E3A;&#x7B56;&#x7565;&#x7F51;&#x7EDC;&#x6DFB;&#x52A0;&#x4EF7;&#x503C;&#x5934;&quot;&quot;&quot;</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, hidden_size)</span>:</span>
+        super().__init__()
+        self.value_head = nn.Linear(hidden_size, <span class="hljs-number">1</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, hidden_states)</span>:</span>
+        <span class="hljs-keyword">return</span> self.value_head(hidden_states).squeeze(<span class="hljs-number">-1</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PPOTrainer</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, policy_model, ref_model, reward_model, tokenizer, config)</span>:</span>
+        self.policy_model = policy_model
+        self.ref_model = ref_model  <span class="hljs-comment"># &#x53C2;&#x8003;&#x6A21;&#x578B;&#xFF08;&#x7528;&#x4E8E;KL&#x6563;&#x5EA6;&#x8BA1;&#x7B97;&#xFF09;</span>
+        self.reward_model = reward_model
+        self.tokenizer = tokenizer
+        self.config = config
+
+        <span class="hljs-comment"># &#x4E3A;&#x7B56;&#x7565;&#x7F51;&#x7EDC;&#x6DFB;&#x52A0;&#x4EF7;&#x503C;&#x5934;</span>
+        self.value_head = ValueHead(policy_model.config.hidden_size).to(config.device)
+
+        <span class="hljs-comment"># &#x8BBE;&#x7F6E;&#x4F18;&#x5316;&#x5668;</span>
+        self.optimizer = optim.AdamW([
+            {<span class="hljs-string">&apos;params&apos;</span>: self.policy_model.parameters()},
+            {<span class="hljs-string">&apos;params&apos;</span>: self.value_head.parameters()}
+        ], lr=config.lr)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute_rewards</span><span class="hljs-params">(self, prompts, responses)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;&#x8BA1;&#x7B97;&#x5956;&#x52B1;&#x503C;&#xFF08;&#x5305;&#x62EC;&#x5956;&#x52B1;&#x6A21;&#x578B;&#x7684;&#x5206;&#x6570;&#x548C;KL&#x60E9;&#x7F5A;&#xFF09;&quot;&quot;&quot;</span>
+        <span class="hljs-comment"># &#x7F16;&#x7801;&#x63D0;&#x793A;&#x548C;&#x56DE;&#x7B54;</span>
+        inputs = self.tokenizer(prompts, responses, return_tensors=<span class="hljs-string">&quot;pt&quot;</span>, padding=<span class="hljs-keyword">True</span>,
+                               truncation=<span class="hljs-keyword">True</span>, max_length=self.config.max_seq_len).to(self.config.device)
+
+        <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x5956;&#x52B1;&#x6A21;&#x578B;&#x5206;&#x6570;</span>
+        <span class="hljs-keyword">with</span> torch.no_grad():
+            reward_score = self.reward_model(inputs.input_ids, inputs.attention_mask)
+
+        <span class="hljs-comment"># &#x8BA1;&#x7B97;KL&#x6563;&#x5EA6;&#xFF08;&#x76F8;&#x5BF9;&#x4E8E;&#x53C2;&#x8003;&#x6A21;&#x578B;&#xFF09;</span>
+        kl_div = self.compute_kl_divergence(prompts, responses)
+
+        <span class="hljs-comment"># &#x6700;&#x7EC8;&#x5956;&#x52B1; = &#x5956;&#x52B1;&#x6A21;&#x578B;&#x5206;&#x6570; - KL&#x7CFB;&#x6570; &#xD7; KL&#x6563;&#x5EA6;</span>
+        final_rewards = reward_score - self.config.kl_coef * kl_div
+
+        <span class="hljs-keyword">return</span> final_rewards
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute_kl_divergence</span><span class="hljs-params">(self, prompts, responses)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;&#x8BA1;&#x7B97;&#x7B56;&#x7565;&#x6A21;&#x578B;&#x548C;&#x53C2;&#x8003;&#x6A21;&#x578B;&#x4E4B;&#x95F4;&#x7684;KL&#x6563;&#x5EA6;&quot;&quot;&quot;</span>
+        <span class="hljs-comment"># &#x7F16;&#x7801;&#x8F93;&#x5165;</span>
+        inputs = self.tokenizer(prompts, return_tensors=<span class="hljs-string">&quot;pt&quot;</span>, padding=<span class="hljs-keyword">True</span>,
+                              truncation=<span class="hljs-keyword">True</span>, max_length=self.config.max_seq_len).to(self.config.device)
+
+        <span class="hljs-comment"># &#x83B7;&#x53D6;&#x76EE;&#x6807;&#x5E8F;&#x5217;</span>
+        target_inputs = self.tokenizer(responses, return_tensors=<span class="hljs-string">&quot;pt&quot;</span>, padding=<span class="hljs-keyword">True</span>,
+                                     truncation=<span class="hljs-keyword">True</span>, max_length=self.config.max_seq_len).to(self.config.device)
+
+        <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x7B56;&#x7565;&#x6A21;&#x578B;&#x7684;log&#x6982;&#x7387;</span>
+        <span class="hljs-keyword">with</span> torch.no_grad():
+            policy_logits = self.policy_model(input_ids=inputs.input_ids, 
+                                           attention_mask=inputs.attention_mask).logits
+            policy_log_probs = F.log_softmax(policy_logits, dim=<span class="hljs-number">-1</span>)
+
+        <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x53C2;&#x8003;&#x6A21;&#x578B;&#x7684;log&#x6982;&#x7387;</span>
+        <span class="hljs-keyword">with</span> torch.no_grad():
+            ref_logits = self.ref_model(input_ids=inputs.input_ids,
+                                      attention_mask=inputs.attention_mask).logits
+            ref_log_probs = F.log_softmax(ref_logits, dim=<span class="hljs-number">-1</span>)
+
+        <span class="hljs-comment"># &#x8BA1;&#x7B97;KL&#x6563;&#x5EA6;&#xFF1A;KL(p||q) = &#x3A3; p(x) * (log p(x) - log q(x))</span>
+        <span class="hljs-comment"># &#x53EA;&#x8BA1;&#x7B97;&#x76EE;&#x6807;token&#x7684;KL&#x6563;&#x5EA6;</span>
+        kl_div = []
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(inputs.input_ids)):
+            kl = <span class="hljs-number">0.0</span>
+            count = <span class="hljs-number">0</span>
+            <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> range(min(len(target_inputs.input_ids[i]), self.config.max_seq_len<span class="hljs-number">-1</span>)):
+                <span class="hljs-keyword">if</span> target_inputs.input_ids[i][t] != self.tokenizer.pad_token_id:
+                    token_id = target_inputs.input_ids[i][t]
+                    p_logprob = policy_log_probs[i, t, token_id]
+                    q_logprob = ref_log_probs[i, t, token_id]
+                    kl += (p_logprob - q_logprob).item()
+                    count += <span class="hljs-number">1</span>
+            kl_div.append(kl / max(count, <span class="hljs-number">1</span>))
+
+        <span class="hljs-keyword">return</span> torch.tensor(kl_div).to(self.config.device)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate_responses</span><span class="hljs-params">(self, prompts)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;&#x4F7F;&#x7528;&#x7B56;&#x7565;&#x6A21;&#x578B;&#x751F;&#x6210;&#x56DE;&#x7B54;&quot;&quot;&quot;</span>
+        responses = []
+        log_probs = []
+
+        self.policy_model.eval()
+        <span class="hljs-keyword">with</span> torch.no_grad():
+            <span class="hljs-keyword">for</span> prompt <span class="hljs-keyword">in</span> prompts:
+                inputs = self.tokenizer(prompt, return_tensors=<span class="hljs-string">&quot;pt&quot;</span>).to(self.config.device)
+
+                <span class="hljs-comment"># &#x751F;&#x6210;tokens</span>
+                output = self.policy_model.generate(
+                    inputs.input_ids,
+                    max_length=self.config.max_seq_len,
+                    do_sample=<span class="hljs-keyword">True</span>,
+                    temperature=<span class="hljs-number">0.7</span>,
+                    return_dict_in_generate=<span class="hljs-keyword">True</span>,
+                    output_scores=<span class="hljs-keyword">True</span>
+                )
+
+                <span class="hljs-comment"># &#x89E3;&#x7801;&#x751F;&#x6210;&#x7684;tokens</span>
+                response = self.tokenizer.decode(output.sequences[<span class="hljs-number">0</span>], skip_special_tokens=<span class="hljs-keyword">True</span>)
+                responses.append(response)
+
+                <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x751F;&#x6210;&#x5E8F;&#x5217;&#x7684;log&#x6982;&#x7387;</span>
+                seq_logprobs = []
+                <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(output.scores)):
+                    token_id = output.sequences[<span class="hljs-number">0</span>][i+<span class="hljs-number">1</span>]
+                    token_logprob = F.log_softmax(output.scores[i][<span class="hljs-number">0</span>], dim=<span class="hljs-number">-1</span>)[token_id]
+                    seq_logprobs.append(token_logprob.item())
+
+                log_probs.append(seq_logprobs)
+
+        <span class="hljs-keyword">return</span> responses, log_probs
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute_advantages</span><span class="hljs-params">(self, rewards, values, masks)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;&#x8BA1;&#x7B97;&#x4F18;&#x52BF;&#x51FD;&#x6570;&#xFF08;&#x4F7F;&#x7528;GAE&#xFF09;&quot;&quot;&quot;</span>
+        advantages = torch.zeros_like(rewards).to(self.config.device)
+        last_advantage = <span class="hljs-number">0</span>
+
+        <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> reversed(range(len(rewards))):
+            <span class="hljs-keyword">if</span> t == len(rewards) - <span class="hljs-number">1</span>:
+                delta = rewards[t] - values[t]  <span class="hljs-comment"># &#x6700;&#x540E;&#x4E00;&#x6B65;&#x6CA1;&#x6709;&#x4E0B;&#x4E00;&#x4E2A;&#x503C;</span>
+            <span class="hljs-keyword">else</span>:
+                delta = rewards[t] + self.config.discount_factor * values[t+<span class="hljs-number">1</span>] * masks[t+<span class="hljs-number">1</span>] - values[t]
+
+            last_advantage = delta + self.config.discount_factor * self.config.gae_lambda * masks[t+<span class="hljs-number">1</span>] * last_advantage
+            advantages[t] = last_advantage
+
+        returns = advantages + values
+        <span class="hljs-keyword">return</span> advantages, returns
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ppo_update</span><span class="hljs-params">(self, prompts, old_responses, old_log_probs, rewards)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;&#x6267;&#x884C;PPO&#x66F4;&#x65B0;&quot;&quot;&quot;</span>
+        batch_size = len(prompts)
+
+        <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x65E7;&#x7B56;&#x7565;&#x7684;&#x4EF7;&#x503C;&#x4F30;&#x8BA1;</span>
+        old_values = []
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(batch_size):
+            inputs = self.tokenizer(prompts[i], old_responses[i], return_tensors=<span class="hljs-string">&quot;pt&quot;</span>, padding=<span class="hljs-keyword">True</span>,
+                                   truncation=<span class="hljs-keyword">True</span>, max_length=self.config.max_seq_len).to(self.config.device)
+            <span class="hljs-keyword">with</span> torch.no_grad():
+                hidden_states = self.policy_model(
+                    input_ids=inputs.input_ids,
+                    attention_mask=inputs.attention_mask,
+                    output_hidden_states=<span class="hljs-keyword">True</span>
+                ).hidden_states[<span class="hljs-number">-1</span>][:, <span class="hljs-number">-1</span>, :]
+                value = self.value_head(hidden_states)
+                old_values.append(value.item())
+
+        old_values = torch.tensor(old_values).to(self.config.device)
+
+        <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x4F18;&#x52BF;&#x548C;&#x56DE;&#x62A5;</span>
+        masks = torch.ones_like(rewards).to(self.config.device)  <span class="hljs-comment"># &#x6240;&#x6709;&#x72B6;&#x6001;&#x90FD;&#x6709;&#x6548;</span>
+        advantages, returns = self.compute_advantages(rewards, old_values, masks)
+
+        <span class="hljs-comment"># &#x5F52;&#x4E00;&#x5316;&#x4F18;&#x52BF;</span>
+        advantages = (advantages - advantages.mean()) / (advantages.std() + <span class="hljs-number">1e-8</span>)
+
+        <span class="hljs-comment"># PPO&#x8BAD;&#x7EC3;&#x5FAA;&#x73AF;</span>
+        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(self.config.ppo_epochs):
+            <span class="hljs-comment"># &#x6253;&#x4E71;&#x6570;&#x636E;</span>
+            indices = torch.randperm(batch_size)
+
+            <span class="hljs-keyword">for</span> start_idx <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, batch_size, self.config.batch_size):
+                end_idx = min(start_idx + self.config.batch_size, batch_size)
+                minibatch_indices = indices[start_idx:end_idx]
+
+                minibatch_prompts = [prompts[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> minibatch_indices]
+                minibatch_responses = [old_responses[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> minibatch_indices]
+                minibatch_log_probs = [old_log_probs[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> minibatch_indices]
+                minibatch_advantages = advantages[minibatch_indices]
+                minibatch_returns = returns[minibatch_indices]
+                minibatch_values = old_values[minibatch_indices]
+
+                <span class="hljs-comment"># &#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x5F53;&#x524D;&#x7B56;&#x7565;&#x7684;&#x6982;&#x7387;&#x548C;&#x503C;</span>
+                policy_loss = <span class="hljs-number">0</span>
+                value_loss = <span class="hljs-number">0</span>
+                entropy_loss = <span class="hljs-number">0</span>
+
+                <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(minibatch_prompts)):
+                    inputs = self.tokenizer(
+                        minibatch_prompts[i], 
+                        return_tensors=<span class="hljs-string">&quot;pt&quot;</span>,
+                        padding=<span class="hljs-keyword">True</span>,
+                        truncation=<span class="hljs-keyword">True</span>,
+                        max_length=self.config.max_seq_len
+                    ).to(self.config.device)
+
+                    <span class="hljs-comment"># &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7B56;&#x7565;&#x7684;log&#x6982;&#x7387;</span>
+                    outputs = self.policy_model(
+                        input_ids=inputs.input_ids,
+                        attention_mask=inputs.attention_mask,
+                        output_hidden_states=<span class="hljs-keyword">True</span>
+                    )
+
+                    logits = outputs.logits
+                    hidden_states = outputs.hidden_states[<span class="hljs-number">-1</span>][:, <span class="hljs-number">-1</span>, :]
+
+                    <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x503C;&#x4F30;&#x8BA1;</span>
+                    current_value = self.value_head(hidden_states)
+
+                    <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x503C;&#x635F;&#x5931;&#xFF08;&#x4F7F;&#x7528;&#x88C1;&#x526A;&#x7684;&#x4EF7;&#x503C;&#x4F30;&#x8BA1;&#xFF09;</span>
+                    value_pred_clipped = minibatch_values[i] + torch.clamp(
+                        current_value - minibatch_values[i],
+                        -self.config.value_clip,
+                        self.config.value_clip
+                    )
+                    value_loss_1 = (current_value - minibatch_returns[i]).pow(<span class="hljs-number">2</span>)
+                    value_loss_2 = (value_pred_clipped - minibatch_returns[i]).pow(<span class="hljs-number">2</span>)
+                    value_loss += <span class="hljs-number">0.5</span> * torch.max(value_loss_1, value_loss_2).mean()
+
+                    <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x751F;&#x6210;&#x7684;&#x56DE;&#x7B54;&#x7684;&#x5F53;&#x524D;log&#x6982;&#x7387;</span>
+                    response_tokens = self.tokenizer(
+                        minibatch_responses[i], 
+                        return_tensors=<span class="hljs-string">&quot;pt&quot;</span>
+                    ).input_ids.to(self.config.device)
+
+                    <span class="hljs-comment"># &#x7B80;&#x5316;&#xFF1A;&#x53EA;&#x8BA1;&#x7B97;&#x4E00;&#x90E8;&#x5206;token&#x7684;&#x6982;&#x7387;&#x6BD4;&#x7387;</span>
+                    log_ratio_sum = <span class="hljs-number">0</span>
+                    old_log_prob_sum = sum(minibatch_log_probs[i])
+
+                    <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> range(min(len(response_tokens[<span class="hljs-number">0</span>])<span class="hljs-number">-1</span>, <span class="hljs-number">20</span>)):  <span class="hljs-comment"># &#x9650;&#x5236;&#x8BA1;&#x7B97;&#x7684;token&#x6570;</span>
+                        token_id = response_tokens[<span class="hljs-number">0</span>][t+<span class="hljs-number">1</span>]
+                        curr_log_prob = F.log_softmax(logits[<span class="hljs-number">0</span>, t, :], dim=<span class="hljs-number">-1</span>)[token_id]
+                        log_ratio_sum += curr_log_prob
+
+                        <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x71B5;</span>
+                        probs = F.softmax(logits[<span class="hljs-number">0</span>, t, :], dim=<span class="hljs-number">-1</span>)
+                        entropy = -(probs * torch.log(probs + <span class="hljs-number">1e-10</span>)).sum()
+                        entropy_loss -= entropy
+
+                    <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x6982;&#x7387;&#x6BD4;&#x7387;&#x548C;&#x88C1;&#x526A;&#x7684;&#x76EE;&#x6807;</span>
+                    ratio = torch.exp(log_ratio_sum - old_log_prob_sum)
+                    surr1 = ratio * minibatch_advantages[i]
+                    surr2 = torch.clamp(ratio, <span class="hljs-number">1.0</span> - self.config.ppo_clip, <span class="hljs-number">1.0</span> + self.config.ppo_clip) * minibatch_advantages[i]
+                    policy_loss -= torch.min(surr1, surr2)
+
+                <span class="hljs-comment"># &#x5F52;&#x4E00;&#x5316;&#x635F;&#x5931;</span>
+                policy_loss = policy_loss / len(minibatch_prompts)
+                value_loss = value_loss / len(minibatch_prompts)
+                entropy_loss = entropy_loss / len(minibatch_prompts)
+
+                <span class="hljs-comment"># &#x603B;&#x635F;&#x5931;</span>
+                loss = policy_loss + <span class="hljs-number">0.5</span> * value_loss + self.config.entropy_coef * entropy_loss
+
+                <span class="hljs-comment"># &#x4F18;&#x5316;</span>
+                self.optimizer.zero_grad()
+                loss.backward()
+                self.optimizer.step()
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train</span><span class="hljs-params">(self, train_prompts, num_steps=<span class="hljs-number">1000</span>)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;&#x5B8C;&#x6574;&#x7684;PPO&#x8BAD;&#x7EC3;&#x5FAA;&#x73AF;&quot;&quot;&quot;</span>
+        <span class="hljs-keyword">for</span> step <span class="hljs-keyword">in</span> tqdm(range(num_steps), desc=<span class="hljs-string">&quot;PPO Training&quot;</span>):
+            <span class="hljs-comment"># &#x6BCF;&#x6B65;&#x4ECE;&#x8BAD;&#x7EC3;&#x63D0;&#x793A;&#x4E2D;&#x91C7;&#x6837;</span>
+            batch_indices = np.random.choice(len(train_prompts), min(self.config.batch_size, len(train_prompts)), replace=<span class="hljs-keyword">False</span>)
+            batch_prompts = [train_prompts[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> batch_indices]
+
+            <span class="hljs-comment"># &#x751F;&#x6210;&#x56DE;&#x7B54;</span>
+            responses, log_probs = self.generate_responses(batch_prompts)
+
+            <span class="hljs-comment"># &#x8BA1;&#x7B97;&#x5956;&#x52B1;</span>
+            rewards = self.compute_rewards(batch_prompts, responses)
+
+            <span class="hljs-comment"># PPO&#x66F4;&#x65B0;</span>
+            self.ppo_update(batch_prompts, responses, log_probs, rewards)
+
+            <span class="hljs-comment"># &#x8BB0;&#x5F55;&#x6307;&#x6807;</span>
+            <span class="hljs-keyword">if</span> step % <span class="hljs-number">10</span> == <span class="hljs-number">0</span>:
+                mean_reward = rewards.mean().item()
+                print(f<span class="hljs-string">&quot;Step {step}, Mean Reward: {mean_reward}&quot;</span>)
+                <span class="hljs-comment"># &#x53EF;&#x4EE5;&#x4F7F;&#x7528;wandb&#x7B49;&#x5DE5;&#x5177;&#x8BB0;&#x5F55;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;</span>
+                <span class="hljs-comment"># wandb.log({&quot;mean_reward&quot;: mean_reward})</span>
+
+            <span class="hljs-comment"># &#x5B9A;&#x671F;&#x4FDD;&#x5B58;&#x6A21;&#x578B;</span>
+            <span class="hljs-keyword">if</span> step % <span class="hljs-number">100</span> == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> step &gt; <span class="hljs-number">0</span>:
+                self.save_model(f<span class="hljs-string">&quot;rlhf_model_step_{step}&quot;</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">save_model</span><span class="hljs-params">(self, path)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;&#x4FDD;&#x5B58;&#x6A21;&#x578B;&quot;&quot;&quot;</span>
+        self.policy_model.save_pretrained(f<span class="hljs-string">&quot;{path}_policy&quot;</span>)
+        self.value_head.save_pretrained(f<span class="hljs-string">&quot;{path}_value&quot;</span>)
+        print(f<span class="hljs-string">&quot;Model saved to {path}&quot;</span>)
+
+<span class="hljs-comment"># &#x5B8C;&#x6574;&#x7684;RLHF&#x8BAD;&#x7EC3;&#x6D41;&#x7A0B;</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rlhf_training_pipeline</span><span class="hljs-params">(config)</span>:</span>
+    <span class="hljs-comment"># &#x52A0;&#x8F7D;&#x9884;&#x8BAD;&#x7EC3;&#x6A21;&#x578B;&#x548C;&#x5206;&#x8BCD;&#x5668;</span>
+    tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model)
+    model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(config.device)
+
+    <span class="hljs-comment"># 1. &#x76D1;&#x7763;&#x5FAE;&#x8C03;</span>
+    print(<span class="hljs-string">&quot;&#x5F00;&#x59CB;&#x76D1;&#x7763;&#x5FAE;&#x8C03;...&quot;</span>)
+    sft_dataset = load_sft_dataset()  <span class="hljs-comment"># &#x52A0;&#x8F7D;SFT&#x6570;&#x636E;&#x96C6;</span>
+    sft_model = supervised_fine_tuning(model, tokenizer, sft_dataset, config)
+
+    <span class="hljs-comment"># 2. &#x5956;&#x52B1;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;</span>
+    print(<span class="hljs-string">&quot;&#x5F00;&#x59CB;&#x5956;&#x52B1;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;...&quot;</span>)
+    preference_dataset = load_preference_dataset()  <span class="hljs-comment"># &#x52A0;&#x8F7D;&#x504F;&#x597D;&#x6570;&#x636E;&#x96C6;</span>
+    reward_model = train_reward_model(sft_model, tokenizer, preference_dataset, config)
+
+    <span class="hljs-comment"># 3. &#x521B;&#x5EFA;PPO&#x8BAD;&#x7EC3;&#x5668;</span>
+    print(<span class="hljs-string">&quot;&#x5F00;&#x59CB;PPO&#x8BAD;&#x7EC3;...&quot;</span>)
+    <span class="hljs-comment"># &#x590D;&#x5236;SFT&#x6A21;&#x578B;&#x4F5C;&#x4E3A;&#x53C2;&#x8003;&#x6A21;&#x578B;</span>
+    ref_model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(config.device)
+    ref_model.load_state_dict(sft_model.state_dict())
+
+    <span class="hljs-comment"># &#x521B;&#x5EFA;PPO&#x8BAD;&#x7EC3;&#x5668;</span>
+    ppo_trainer = PPOTrainer(sft_model, ref_model, reward_model, tokenizer, config)
+
+    <span class="hljs-comment"># &#x52A0;&#x8F7D;&#x8BAD;&#x7EC3;&#x63D0;&#x793A;</span>
+    train_prompts = load_training_prompts()  <span class="hljs-comment"># &#x52A0;&#x8F7D;&#x8BAD;&#x7EC3;&#x63D0;&#x793A;</span>
+
+    <span class="hljs-comment"># &#x5F00;&#x59CB;PPO&#x8BAD;&#x7EC3;</span>
+    ppo_trainer.train(train_prompts, num_steps=<span class="hljs-number">1000</span>)
+
+    <span class="hljs-comment"># &#x8FD4;&#x56DE;&#x6700;&#x7EC8;&#x7684;RLHF&#x6A21;&#x578B;</span>
+    <span class="hljs-keyword">return</span> ppo_trainer.policy_model
+
+<span class="hljs-comment"># &#x8F85;&#x52A9;&#x51FD;&#x6570;&#xFF1A;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x96C6;&#xFF08;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x65F6;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#xFF09;</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">load_sft_dataset</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># &#x5B9E;&#x73B0;&#xFF1A;&#x52A0;&#x8F7D;&#x76D1;&#x7763;&#x5FAE;&#x8C03;&#x6570;&#x636E;&#x96C6;</span>
+    <span class="hljs-keyword">pass</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">load_preference_dataset</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># &#x5B9E;&#x73B0;&#xFF1A;&#x52A0;&#x8F7D;&#x4EBA;&#x7C7B;&#x504F;&#x597D;&#x6570;&#x636E;&#x96C6;</span>
+    <span class="hljs-keyword">pass</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">load_training_prompts</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># &#x5B9E;&#x73B0;&#xFF1A;&#x52A0;&#x8F7D;&#x8BAD;&#x7EC3;&#x63D0;&#x793A;</span>
+    <span class="hljs-keyword">pass</span>
+
+<span class="hljs-comment"># &#x4E3B;&#x51FD;&#x6570;</span>
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    <span class="hljs-comment"># &#x914D;&#x7F6E;&#x53C2;&#x6570;</span>
+    config = RLHFConfig(
+        pretrained_model=<span class="hljs-string">&quot;gpt2-medium&quot;</span>,  <span class="hljs-comment"># &#x6216;&#x8005;&#x5176;&#x4ED6;&#x57FA;&#x7840;&#x6A21;&#x578B;</span>
+        lr=<span class="hljs-number">2e-5</span>,
+        batch_size=<span class="hljs-number">4</span>,
+        epochs=<span class="hljs-number">3</span>,
+        max_seq_len=<span class="hljs-number">512</span>,
+        kl_coef=<span class="hljs-number">0.05</span>,
+        discount_factor=<span class="hljs-number">0.99</span>,
+        gae_lambda=<span class="hljs-number">0.95</span>,
+        ppo_epochs=<span class="hljs-number">4</span>,
+        ppo_clip=<span class="hljs-number">0.2</span>,
+    )
+
+    <span class="hljs-comment"># &#x5F00;&#x59CB;RLHF&#x8BAD;&#x7EC3;</span>
+    final_model = rlhf_training_pipeline(config)
+
+    <span class="hljs-comment"># &#x4FDD;&#x5B58;&#x6700;&#x7EC8;&#x6A21;&#x578B;</span>
+    final_model.save_pretrained(<span class="hljs-string">&quot;final_rlhf_model&quot;</span>)
+    print(<span class="hljs-string">&quot;RLHF&#x8BAD;&#x7EC3;&#x5B8C;&#x6210;&#xFF0C;&#x6A21;&#x578B;&#x5DF2;&#x4FDD;&#x5B58;!&quot;</span>)
+</code></pre>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x6E38;&#x6587;&#x658C;  &#x5927;&#x6A21;&#x578B;&#x7B97;&#x6CD5;&#x5DE5;&#x7A0B;&#x5E08;&#xFF0C;&#x5FAE;&#x4FE1;&#xFF1A;WayneBinY</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2025-04-15 21:21:52
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="doc1.html" class="navigation navigation-prev " aria-label="Previous page: GitBook自动更新指南">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter1/" class="navigation navigation-next " aria-label="Next page: 第1章 模型基础">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"RLHF训练代码PPO","level":"1.2.3","depth":2,"next":{"title":"第1章 模型基础","level":"1.3","depth":1,"path":"chapter1/README.md","ref":"chapter1/README.md","articles":[]},"previous":{"title":"GitBook自动更新指南","level":"1.2.2","depth":2,"path":"chapter0/doc1.md","ref":"chapter0/doc1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","chapter-fold","sidebar-style","tbfed-pagefooter","hide-element","simple-page-toc","popup","github","code","copy-code-button","alerts","page-toc-button","auto-scroll-table"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"sidebar-style":{"author":"游文斌","title":"《大模型笔记》"},"tbfed-pagefooter":{"copyright":"Copyright &copy 游文斌  大模型算法工程师，微信：WayneBinY","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss","noPowered":true},"chapter-fold":{},"github":{"url":"https://github.com/Jeremyywb"},"simple-page-toc":{},"search":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":false},"hide-element":{"elements":["br",".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"alerts":{},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"公众号":"https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzIwODc1MDg2NQ==&scene=1&album_id=3936221539196174339&count=3#wechat_redirect"},"sharing":{"qq":false,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon","whatsapp"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":true,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true}},"gitbook":"*"},"file":{"path":"chapter0/doc2.md","mtime":"2025-04-15T13:21:52.277Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-04-15T13:21:54.742Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sidebar-style/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

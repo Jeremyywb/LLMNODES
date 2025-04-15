@@ -195,6 +195,32 @@
 
 对于希望构建高质量 RAG 应用的开发者，建议结合自身应用场景，选择适合的技术组合，并持续关注该领域的最新进展。
 
+
+## RLHF
+
+### （NEW）L图解大模型RLHF系列之：人人都能看懂的PPO原理与源码解读 [ LINK ](https://mp.weixin.qq.com/s/E3zJ_456zo91QVRPgKNU_A)  
+
+通过解析RLHF开源项目源码（deepspeed-chat），帮助大家更具象地感受RLHF的训练流程
+
+- NLP中的强化学习
+- RLHF中的四个重要角色
+- RLHF中的loss计算
+- Critic loss
+
+适用于RLHF入门初学者
+
+### （NEW）Claude 3.7实现RLHF训练PPO代码 [ LINK ](doc2.md)  
+
+主要实现了PPO各个步骤训练的代码， 但是似乎少了critic相关的代码不知道是否有误。
+
+-  监督微调 (SFT) 阶段
+- 奖励模型 (RM) 训练阶段 
+- 强化学习优化 (RL) 阶段
+- PPO 更新
+
+适用用于RLHF初学者，内容准确性待鉴定
+
+
 ---
 
 *注：以上链接资源均来自公开渠道，文章内容仅作学习参考。如有侵权，请联系删除。*
